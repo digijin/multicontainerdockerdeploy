@@ -1,0 +1,49 @@
+0 info it worked if it ends with ok
+1 verbose cli [ 'C:\\Program Files\\nodejs\\node.exe',
+1 verbose cli   'C:\\Program Files\\nodejs\\node_modules\\npm\\bin\\npm-cli.js',
+1 verbose cli   'run',
+1 verbose cli   'pushimage' ]
+2 info using npm@4.1.2
+3 info using node@v7.6.0
+4 verbose run-script [ 'prepushimage', 'pushimage', 'postpushimage' ]
+5 info lifecycle multicontainerdockerdeploy@1.0.0~prepushimage: multicontainerdockerdeploy@1.0.0
+6 silly lifecycle multicontainerdockerdeploy@1.0.0~prepushimage: no script for prepushimage, continuing
+7 info lifecycle multicontainerdockerdeploy@1.0.0~pushimage: multicontainerdockerdeploy@1.0.0
+8 verbose lifecycle multicontainerdockerdeploy@1.0.0~pushimage: unsafe-perm in lifecycle true
+9 verbose lifecycle multicontainerdockerdeploy@1.0.0~pushimage: PATH: C:\Users\digijin\AppData\Roaming\nvm\v7.6.0\node_modules\npm\bin\node-gyp-bin;W:\workspace\multicontainerdockerdeploy\node_modules\.bin;C:\Program Files\Git\mingw64\bin;C:\Program Files\Git\usr\bin;C:\Users\digijin\bin;C:\Users\digijin\bin;C:\Program Files\Git\mingw64\bin;C:\Program Files\Git\usr\local\bin;C:\Program Files\Git\usr\bin;C:\Program Files\Git\usr\bin;C:\Program Files\Git\cmd;C:\Program Files\ConEmu;C:\Program Files\ConEmu\ConEmu;C:\Program Files\Docker\Docker\Resources\bin;C:\WINDOWS\system32;C:\WINDOWS;C:\WINDOWS\System32\Wbem;C:\WINDOWS\System32\WindowsPowerShell\v1.0;C:\Program Files (x86)\AMD\ATI.ACE\Core-Static;C:\Program Files (x86)\ATI Technologies\ATI.ACE\Core-Static;C:\Program Files\Git\cmd;C:\Users\digijin\AppData\Roaming\nvm;C:\Program Files\nodejs;C:\Program Files (x86)\Gource\cmd;C:\Program Files\Docker Toolbox;C:\Users\digijin\AppData\Local\atom\bin;C:\Users\digijin\AppData\Roaming\nvm;C:\Program Files\nodejs;C:\Users\digijin\AppData\Local\Microsoft\WindowsApps;C:\Program Files (x86)\Microsoft VS Code\bin;C:\Program Files\Git\usr\bin\vendor_perl;C:\Program Files\Git\usr\bin\core_perl
+10 verbose lifecycle multicontainerdockerdeploy@1.0.0~pushimage: CWD: W:\workspace\multicontainerdockerdeploy
+11 silly lifecycle multicontainerdockerdeploy@1.0.0~pushimage: Args: [ '/d /s /c',
+11 silly lifecycle   'docker push 005361531463.dkr.ecr.us-east-1.amazonaws.com/docker:latest' ]
+12 silly lifecycle multicontainerdockerdeploy@1.0.0~pushimage: Returned: code: 1  signal: null
+13 info lifecycle multicontainerdockerdeploy@1.0.0~pushimage: Failed to exec pushimage script
+14 verbose stack Error: multicontainerdockerdeploy@1.0.0 pushimage: `docker push 005361531463.dkr.ecr.us-east-1.amazonaws.com/docker:latest`
+14 verbose stack Exit status 1
+14 verbose stack     at EventEmitter.<anonymous> (C:\Users\digijin\AppData\Roaming\nvm\v7.6.0\node_modules\npm\lib\utils\lifecycle.js:279:16)
+14 verbose stack     at emitTwo (events.js:106:13)
+14 verbose stack     at EventEmitter.emit (events.js:192:7)
+14 verbose stack     at ChildProcess.<anonymous> (C:\Users\digijin\AppData\Roaming\nvm\v7.6.0\node_modules\npm\lib\utils\spawn.js:40:14)
+14 verbose stack     at emitTwo (events.js:106:13)
+14 verbose stack     at ChildProcess.emit (events.js:192:7)
+14 verbose stack     at maybeClose (internal/child_process.js:890:16)
+14 verbose stack     at Process.ChildProcess._handle.onexit (internal/child_process.js:226:5)
+15 verbose pkgid multicontainerdockerdeploy@1.0.0
+16 verbose cwd W:\workspace\multicontainerdockerdeploy
+17 error Windows_NT 10.0.15063
+18 error argv "C:\\Program Files\\nodejs\\node.exe" "C:\\Program Files\\nodejs\\node_modules\\npm\\bin\\npm-cli.js" "run" "pushimage"
+19 error node v7.6.0
+20 error npm  v4.1.2
+21 error code ELIFECYCLE
+22 error multicontainerdockerdeploy@1.0.0 pushimage: `docker push 005361531463.dkr.ecr.us-east-1.amazonaws.com/docker:latest`
+22 error Exit status 1
+23 error Failed at the multicontainerdockerdeploy@1.0.0 pushimage script 'docker push 005361531463.dkr.ecr.us-east-1.amazonaws.com/docker:latest'.
+23 error Make sure you have the latest version of node.js and npm installed.
+23 error If you do, this is most likely a problem with the multicontainerdockerdeploy package,
+23 error not with npm itself.
+23 error Tell the author that this fails on your system:
+23 error     docker push 005361531463.dkr.ecr.us-east-1.amazonaws.com/docker:latest
+23 error You can get information on how to open an issue for this project with:
+23 error     npm bugs multicontainerdockerdeploy
+23 error Or if that isn't available, you can get their info via:
+23 error     npm owner ls multicontainerdockerdeploy
+23 error There is likely additional logging output above.
+24 verbose exit [ 1, true ]
