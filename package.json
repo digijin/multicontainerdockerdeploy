@@ -6,11 +6,13 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "start": "node server.js",
+    "localregistry": "docker run -d -p 5000:5000 --name registry registry:2",
     "localimage": "docker build -t localhost:5000/mcdd:latest .",
-    "image": "docker build -t 005361531463.dkr.ecr.us-east-1.amazonaws.com/docker:latest .",
-    "pushimage": "docker push 005361531463.dkr.ecr.us-east-1.amazonaws.com/docker:latest",
-    "runimage": "docker run -p 8080:8080 005361531463.dkr.ecr.us-east-1.amazonaws.com/docker:latest",
-    "registry": "docker run -d -p 5000:5000 --name registry registry:2",
+    "image": "docker build -t 005361531463.dkr.ecr.ap-southeast-2.amazonaws.com/testapp:latest .",
+    "pushimage": "docker push 005361531463.dkr.ecr.ap-southeast-2.amazonaws.com/testapp:latest",
+    "runimage": "docker run -p 8080:8080 005361531463.dkr.ecr.ap-southeast-2.amazonaws.com/testapp:latest",
+    "awslogin": "aws configure",
+    "dockerlogin": "aws ecr get-login --no-include-email --region ap-southeast-2 | sed 's|https://||' | sh",
     "deploy": "node deploy.js"
   },
   "repository": {
