@@ -15,9 +15,9 @@ var application = new Application(
 // Deploy
 application.deploy(
 {
-    archiveFilePath: 'package-v1.zip',
-    environmentName: 'mypetcname',
-    awsStackName: '64bit Amazon Linux 2015.03 v2.0.0 running Node.js',//64bit Amazon Linux 2017.03 v2.7.1 running Multi-container Docker 17.03.1-ce 
+    archiveFilePath: 'deploytest-v3.zip',
+    environmentName: 'deploytest-test-env',
+    awsStackName: '64bit Amazon Linux 2017.03 v2.7.2 running Multi-container Docker 17.03.1-ce (Generic)',
     beanstalkConfig: [
     ]
 }
