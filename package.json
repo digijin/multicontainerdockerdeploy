@@ -11,6 +11,7 @@
     "image": "docker build -t 005361531463.dkr.ecr.ap-southeast-2.amazonaws.com/testapp:latest .",
     "pushimage": "docker push 005361531463.dkr.ecr.ap-southeast-2.amazonaws.com/testapp:latest",
     "runimage": "docker run -p 8080:8080 005361531463.dkr.ecr.ap-southeast-2.amazonaws.com/testapp:latest",
+    "makevolume": "docker volume create myvolume",
     "awslogin": "aws configure",
     "dockerlogin": "aws ecr get-login --no-include-email --region ap-southeast-2 | sed 's|https://||' | sh",
     "deploy": "node deploy.js"
