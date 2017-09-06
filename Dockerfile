@@ -1,5 +1,6 @@
 FROM node:6.11.2
-ADD . /var/app
+ADD dist /var/app
+ADD package.json /var/app
 WORKDIR /var/app
 RUN npm i -g yarn
 RUN yarn
