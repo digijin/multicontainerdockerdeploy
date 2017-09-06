@@ -1,69 +1,20 @@
 {
   "AWSEBDockerrunVersion": 2,
-  "volumes": [
-    {
-      "name": "php-app",
-      "host": {
-        "sourcePath": "/var/app/current/php-app"
-      }
-    },
-    {
-      "name": "nginx-proxy-conf",
-      "host": {
-        "sourcePath": "/var/app/current/proxy/conf.d"
-      }
-    }
-  ],
+  "volumes": [],
   "containerDefinitions": [
     {
-      "name": "php-app",
-      "image": "php:fpm",
-      "environment": [
-        {
-          "name": "Container",
-          "value": "PHP"
-        }
-      ],
-      "essential": true,
-      "memory": 128,
-      "mountPoints": [
-        {
-          "sourceVolume": "php-app",
-          "containerPath": "/var/www/html",
-          "readOnly": true
-        }
-      ]
-    },
-    {
-      "name": "nginx-proxy",
-      "image": "nginx",
+      "name": "app",
+      "image": "005361531463.dkr.ecr.ap-southeast-2.amazonaws.com/test:latest",
       "essential": true,
       "memory": 128,
       "portMappings": [
         {
           "hostPort": 80,
-          "containerPort": 80
+          "containerPort": 8000
         }
       ],
-      "links": [
-        "php-app"
-      ],
-      "mountPoints": [
-        {
-          "sourceVolume": "php-app",
-          "containerPath": "/var/www/html",
-          "readOnly": true
-        },
-        {
-          "sourceVolume": "nginx-proxy-conf",
-          "containerPath": "/etc/nginx/conf.d",
-          "readOnly": true
-        },
-        {
-          "sourceVolume": "awseb-logs-nginx-proxy",
-          "containerPath": "/var/log/nginx"
-        }
-      ]
+      "links": [],
+      "mountPoints": []
     }
   ]
 }

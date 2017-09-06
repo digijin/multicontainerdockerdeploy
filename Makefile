@@ -39,6 +39,10 @@ push:
 	docker push $(APP_IMAGE)
 .PHONY: push
 
+package:
+	node devops/package.js
+.PHONY: package
+
 
 
 
