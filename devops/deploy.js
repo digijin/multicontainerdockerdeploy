@@ -1,5 +1,6 @@
 var Beanstalkify = require("beanstalkify");
-var secret = require("./secret.json");
+var secret = require("../secret.json");
+var path = require("path");
 
 var config = {
   app: "deploytest",
@@ -7,6 +8,9 @@ var config = {
   ami:
     "64bit Amazon Linux 2017.03 v2.7.2 running Multi-container Docker 17.03.1-ce (Generic)"
 };
+
+var project = process.argv[2] || "deploytest";
+var version = process.argv[3] || "1";
 
 // Deploy
 var beanstalk = new Beanstalkify({
@@ -17,7 +21,7 @@ var beanstalk = new Beanstalkify({
 
 beanstalk
   .deploy({
-    archiveFilePath: config.app + "-v3.zip",
+    archiveFilePath: path.join("..", project + "-v" + version + ".zip"),
     environmentName: config.env,
     awsStackName: config.ami,
     beanstalkConfig: []

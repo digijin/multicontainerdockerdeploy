@@ -1,8 +1,13 @@
 var fs = require("fs");
 var archiver = require("archiver");
 
+var project = process.argv[2] || "deploytest";
+var version = process.argv[3] || "1";
+
 //package
-var output = fs.createWriteStream(__dirname + "/../package.zip");
+var output = fs.createWriteStream(
+  __dirname + "/../" + project + "-v" + version + ".zip"
+);
 var archive = archiver("zip", {
   zlib: { level: 9 } // Sets the compression level.
 });

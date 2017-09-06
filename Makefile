@@ -40,8 +40,12 @@ push:
 .PHONY: push
 
 package:
-	node devops/package.js
+	node devops/package.js $(PROJECT) $(VERSION)
 .PHONY: package
+
+deploy:
+	node devops/deploy.js $(PROJECT) $(VERSION)
+.PHONY: deploy
 
 
 
