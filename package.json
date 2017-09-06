@@ -27,6 +27,7 @@
   },
   "homepage": "https://github.com/digijin/multicontainerdockerdeploy#readme",
   "dependencies": {
+    "archiver": "^2.0.3",
     "beanstalkify": "^2.1.0",
     "express": "^4.15.4"
   }
