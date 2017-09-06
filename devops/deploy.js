@@ -21,7 +21,7 @@ var beanstalk = new Beanstalkify({
 
 beanstalk
   .deploy({
-    archiveFilePath: path.join("..", project + "-v" + version + ".zip"),
+    archiveFilePath: project + "-v" + version + ".zip",
     environmentName: config.env,
     awsStackName: config.ami,
     beanstalkConfig: []
