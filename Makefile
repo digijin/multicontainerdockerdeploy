@@ -11,7 +11,9 @@ AWS_KEYS = creds.yml
 ENVIRONMENT = default
 
 
-
+default: 
+	
+.PHONY: default
 
 
 
@@ -43,7 +45,7 @@ package:
 	node devops/package.js $(PROJECT) $(VERSION)
 .PHONY: package
 
-deploy:
+deploy: package
 	node devops/deploy.js $(PROJECT) $(VERSION)
 .PHONY: deploy
 
