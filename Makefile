@@ -21,7 +21,11 @@ install:
 	yarn
 .PHONY: install
 
-build:
+clean:
+	rm -r dist
+.PHONY: clean
+
+build: clean
 	cp -r src dist
 .PHONY: build
 
@@ -68,11 +72,7 @@ transfervolumes:
 .PHONY: transfervolumes
 
 
-clean:
-	sudo rm -rf $(BUILD_DIR)
-	sudo rm -rf Docker.aws.json
-	sudo rm -rf node_modules
-.PHONY: clean
+
 
 
 deps:
