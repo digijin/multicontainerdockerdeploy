@@ -4,9 +4,9 @@ var path = require("path");
 
 var config = {
   app: "deploytest",
-  env: "deploy-test-env",
+  env: "Test-env",
   ami:
-    "64bit Amazon Linux 2017.03 v2.7.2 running Multi-container Docker 17.03.1-ce (Generic)"
+    "64bit Amazon Linux 2017.03 v2.7.4 running Multi-container Docker 17.03.1-ce (Generic)"
 };
 
 var project = process.argv[2] || "deploytest";
