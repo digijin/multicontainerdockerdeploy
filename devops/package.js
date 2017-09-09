@@ -23,7 +23,7 @@ archive.pipe(output);
 //SPECIFICS
 // archive.file("package.json", { name: "package.json" });
 // archive.directory("src/", false);
-archive.file("dockerrun.aws.json", { name: "dockerrun.aws.json" });
+archive.file("Dockerrun.aws.json", { name: "Dockerrun.aws.json" });
 archive.directory(".ebextensions/", ".ebextensions");
 
 archive.finalize();
