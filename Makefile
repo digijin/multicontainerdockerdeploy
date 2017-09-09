@@ -34,14 +34,14 @@ run:
 .PHONY: run
 
 login:
-	aws ecr get-login --no-include-email --region ap-southeast-2 | sh
+	aws ecr get-login --no-include-email --region ap-southeast-2
 .PHONY: login
 
 push:
 	docker push $(APP_IMAGE)
 .PHONY: push
 
-package:
+package: build
 	node devops/package.js $(PROJECT) $(VERSION)
 .PHONY: package
 
