@@ -25,7 +25,9 @@ clean:
 .PHONY: clean
 
 build: clean
-	cp -r src dist
+	npm run build
+	cp src/server.js dist/server.js
+	cp -r src/server dist/server
 .PHONY: build
 
 image: build
@@ -36,8 +38,8 @@ getrole:
 	aws iam get-role --role-name dockerinstance
 .PHONY: getrole
 
-run:
-	docker run -it $(APP_IMAGE)
+run: image
+	docker run -it -p 8080:8080 $(APP_IMAGE)
 .PHONY: run
 
 login:

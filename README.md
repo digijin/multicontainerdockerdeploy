@@ -20,6 +20,6 @@ This repo is a base project that will use webpack to build a react node app, put
  - `make build` (previous steps plus builds dist directory)
  - `make image` (previous steps plus makes docker image)
  - `make push` (previous steps plus pushes docker image to registry)
- - `make package` (previous steps plus makes zip with dockerrun)
- - `make deploy` (previous steps plus deploys zip)
+ - `make package` (previous steps plus makes elastic beanstalk package)
+ - `make deploy` (previous steps plus deploys package)
 
