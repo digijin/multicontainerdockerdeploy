@@ -1,25 +1,22 @@
-# multicontainerdockerdeploy
+# multi container docker deploy
 
+This assumes you have a IAM role created in your AWS account called `dockerinstance` with the following policies:
+`AmazonEC2ContainerRegistryReadOnly` `AWSElasticBeanstalkWebTier` `AWSElasticBeanstalkMulticontainerDocker` `AWSElasticBeanstalkWorkerTier`
 
 steps:
 
-clone this repo
+ - clone this repo
+ - add your keys to `./secret.json` in this format:
+>{
+    "accessKeyId": "YOUR_KEY",
+    "secretAccessKey": "YOUR_SECRET"
+    }
 
-add your keys
-put your server details into the makefile variables
+ - put your server details into the makefile variables
+ - `make install` (installs deps)
+ - `make build` (builds dist directory)
+ - `make image` (makes docker image)
+ - `make push` (pushes docker image to registry)
+ - `make package` (makes zip with dockerrun)
+ - `make deploy` (deploys zip)
 
-make install (installs deps)
-
-make build (builds dist directory)
-
-make image (makes docker image)
-
-make push (pushes docker image to registry)
-
-make package (makes zip with dockerrun)
-
-make deploy (deploys zip)
-
-
-
-for ec2 to get the image from ecr, the role needs to have AmazonEC2ContainerRegistryReadOnly policy
