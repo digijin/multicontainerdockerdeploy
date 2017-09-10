@@ -28,7 +28,7 @@ build: clean
 	cp -r src dist
 .PHONY: build
 
-image:
+image: build
 	docker build . -t $(APP_IMAGE)
 .PHONY: image
 
@@ -44,11 +44,11 @@ login:
 	aws ecr get-login --no-include-email --region ap-southeast-2
 .PHONY: login
 
-push:
+push: image
 	docker push $(APP_IMAGE)
 .PHONY: push
 
-package: build
+package: push
 	node devops/package.js --project=$(PROJECT) --version=$(VERSION) --image=$(APP_IMAGE)
 .PHONY: package
 

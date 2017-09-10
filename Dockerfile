@@ -1,9 +1,11 @@
-FROM node:6.11.2
+FROM mhart/alpine-node:8
 ADD dist /var/app
 ADD package.json /var/app
+ADD yarn.lock /var/app
+ADD node_modules /var/app/node_modules
 WORKDIR /var/app
-RUN npm i -g yarn
 RUN yarn
-ENTRYPOINT npm start
+RUN npm rebuild
 ENV PORT 8080
 EXPOSE 8080
+CMD ["npm", "start"]
