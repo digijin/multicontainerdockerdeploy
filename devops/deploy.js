@@ -4,7 +4,7 @@ var path = require("path");
 
 var config = {
   app: "deploytest",
-  env: "deploy-env",
+  env: "ecr-env",
   ami:
     "64bit Amazon Linux 2017.03 v2.7.4 running Multi-container Docker 17.03.1-ce (Generic)"
 };
