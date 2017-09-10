@@ -9,6 +9,7 @@
     "unit": "jest -o --watch",
     "dev": "webpack-dev-server --inline",
     "build": "webpack",
+    "buildServer": "webpack --config webpack-server.config.js",
     "flow": "flow; test $? -eq 0 -o $? -eq 2",
     "flow:watch": "flow-watch",
     "coverage": "jest --coverage --watch",

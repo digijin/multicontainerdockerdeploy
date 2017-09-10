@@ -26,8 +26,6 @@ clean:
 
 build: clean
 	npm run build
-	cp src/server.js dist/server.js
-	cp -r src/server dist/server
 .PHONY: build
 
 image: build
