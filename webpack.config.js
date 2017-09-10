@@ -82,6 +82,9 @@ module.exports = [
     context: __dirname + "/src",
     entry: ["babel-polyfill", "./server"],
     target: "node",
+    node: {
+      __dirname: false
+    },
     output: {
       path: __dirname + "/dist",
       filename: "server.js",
