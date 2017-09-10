@@ -3,12 +3,11 @@ PROJECT = test
 VERSION = latest
 REGION = ap-southeast-2
 AWS_ACCOUNT_ID = 005361531463
+
 REGISTRY = $(AWS_ACCOUNT_ID).dkr.ecr.$(REGION).amazonaws.com
 APP_IMAGE = $(REGISTRY)/$(PROJECT):$(VERSION)
-KEY_DIR = keys
-AWS_KEYS = creds.yml
 #env
-ENVIRONMENT = default
+ENV = default
 
 
 default: 
@@ -50,11 +49,11 @@ push:
 .PHONY: push
 
 package: build
-	node devops/package.js $(PROJECT) $(VERSION)
+	node devops/package.js --project=$(PROJECT) --version=$(VERSION)
 .PHONY: package
 
 deploy: package
-	node devops/deploy.js $(PROJECT) $(VERSION)
+	node devops/deploy.js --project=$(PROJECT) --version=$(VERSION) --env=$(ENV)
 .PHONY: deploy
 
 

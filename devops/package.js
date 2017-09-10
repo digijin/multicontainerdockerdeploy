@@ -1,8 +1,9 @@
 var fs = require("fs");
 var archiver = require("archiver");
 
-var project = process.argv[2] || "deploytest";
-var version = process.argv[3] || "1";
+var argv = require("yargs").argv;
+var project = argv.project;
+var version = argv.version;
 
 //package
 var output = fs.createWriteStream(
