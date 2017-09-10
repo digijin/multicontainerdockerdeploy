@@ -49,7 +49,7 @@ push:
 .PHONY: push
 
 package: build
-	node devops/package.js --project=$(PROJECT) --version=$(VERSION)
+	node devops/package.js --project=$(PROJECT) --version=$(VERSION) --image=$(APP_IMAGE)
 .PHONY: package
 
 deploy: package

@@ -28,4 +28,16 @@ archive.pipe(output);
 // archive.directory(".ebextensions/", ".ebextensions");
 archive.directory("devops/package/", false);
 
+//process dockerrun file
+var dockerrun = require("./Dockerrun.aws.json");
+
+//add specific server image
+if (argv.image) {
+  dockerrun.containerDefinitions[0].image = argv.image;
+}
+
+archive.append(JSON.stringify(dockerrun, null, 2), {
+  name: "Dockerrun.aws.json"
+});
+
 archive.finalize();
