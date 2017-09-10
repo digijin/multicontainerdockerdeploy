@@ -80,7 +80,7 @@ module.exports = [
     // The configuration for the server-side rendering
     name: "server-side rendering",
     context: __dirname + "/src",
-    entry: ["babel-polyfill", "./server.js"],
+    entry: ["babel-polyfill", "./server"],
     target: "node",
     output: {
       path: __dirname + "/dist",
