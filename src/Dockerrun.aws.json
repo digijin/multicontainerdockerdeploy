@@ -10,13 +10,13 @@
     {
       "name": "nginx-proxy-conf",
       "host": {
-        "sourcePath": "/var/app/current/proxy/conf.d"
+        "sourcePath": "/var/app/current/nginx"
       }
     }
   ],
   "containerDefinitions": [
     {
-      "name": "app",
+      "name": "server",
       "image": "005361531463.dkr.ecr.ap-southeast-2.amazonaws.com/test:latest",
       "authentication": {
         "bucket": "digijin-docker",
@@ -34,23 +34,6 @@
       "mountPoints": []
     },
     {
-      "name": "php-app",
-      "image": "php:fpm",
-      "essential": true,
-      "memory": 128,
-      "mountPoints": [
-        {
-          "sourceVolume": "php-app",
-          "containerPath": "/var/www/html",
-          "readOnly": true
-        },
-        {
-          "sourceVolume": "awseb-logs-php-app",
-          "containerPath": "/var/log/sample-app"
-        }
-      ]
-    },
-    {
       "name": "nginx-proxy",
       "image": "nginx",
       "essential": true,
@@ -61,13 +44,8 @@
           "containerPort": 80
         }
       ],
-      "links": ["php-app"],
+      "links": ["server"],
       "mountPoints": [
-        {
-          "sourceVolume": "php-app",
-          "containerPath": "/var/www/html",
-          "readOnly": true
-        },
         {
           "sourceVolume": "awseb-logs-nginx-proxy",
           "containerPath": "/var/log/nginx"
