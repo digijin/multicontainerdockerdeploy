@@ -33,6 +33,10 @@ image:
 	docker build . -t $(APP_IMAGE)
 .PHONY: image
 
+getrole:
+	aws iam get-role --role-name dockerinstance
+.PHONY: getrole
+
 run:
 	docker run -it $(APP_IMAGE)
 .PHONY: run
@@ -54,28 +58,3 @@ deploy: package
 .PHONY: deploy
 
 
-
-
-test:
-	echo 'test'
-.PHONY: test
-
-transfervolumes:
-	docker build -t transferringvolumes:source ./transferringvolumes/source
-	docker build -t transferringvolumes:destination ./transferringvolumes/destination
-
-	docker volume create transfervolume
-
-	docker run --mount source=transfervolume,target=/var/volume transferringvolumes:source
-	sleep 1
-	docker run --mount source=transfervolume,target=/var/volume transferringvolumes:destination
-.PHONY: transfervolumes
-
-
-
-
-
-deps:
-	docker run --rm -t -v $(PWD):/opt/app -w /opt/app $(BUILD_IMAGE) \
-		sh -c "npm set progress=false && npm --no-color install --default --quiet" 
-.PHONY: deps
