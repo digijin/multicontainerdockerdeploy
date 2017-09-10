@@ -4,17 +4,17 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
     "start": "node server.js",
-    "localregistry": "docker run -d -p 5000:5000 --name registry registry:2",
-    "localimage": "docker build -t localhost:5000/mcdd:latest .",
-    "image": "docker build -t 005361531463.dkr.ecr.ap-southeast-2.amazonaws.com/testapp:latest .",
-    "pushimage": "docker push 005361531463.dkr.ecr.ap-southeast-2.amazonaws.com/testapp:latest",
-    "runimage": "docker run -p 8080:8080 005361531463.dkr.ecr.ap-southeast-2.amazonaws.com/testapp:latest",
-    "makevolume": "docker volume create myvolume",
+    "test": "jest",
+    "unit": "jest -o --watch",
+    "dev": "webpack-dev-server --inline",
+    "build": "webpack",
+    "flow": "flow; test $? -eq 0 -o $? -eq 2",
+    "flow:watch": "flow-watch",
+    "coverage": "jest --coverage --watch",
     "awslogin": "aws configure",
-    "dockerlogin": "aws ecr get-login --no-include-email --region ap-southeast-2 | sed 's|https://||' | sh",
-    "deploy": "node deploy.js"
+    "dockerlogin":
+      "aws ecr get-login --no-include-email --region ap-southeast-2 | sed 's|https://||' | sh"
   },
   "repository": {
     "type": "git",
@@ -30,6 +30,61 @@
     "archiver": "^2.0.3",
     "beanstalkify": "^2.1.0",
     "express": "^4.15.4",
-    "yargs": "^8.0.2"
+    "yargs": "^8.0.2",
+    "babel-core": "^6.7.6",
+    "babel-loader": "^6.2.4",
+    "babel-plugin-transform-class-properties": "^6.9.1",
+    "babel-plugin-transform-flow-strip-types": "^6.21.0",
+    "babel-polyfill": "^6.3.14",
+    "babel-preset-es2015": "^6.6.0",
+    "babel-preset-es2015-native-generators": "^6.6.0",
+    "babel-preset-react": "^6.5.0",
+    "babel-preset-stage-0": "^6.5.0",
+    "bootstrap": "^3.3.7",
+    "copy-webpack-plugin": "^0.2.0",
+    "css-loader": "^0.23.1",
+    "extract-text-webpack-plugin": "^1.0.0",
+    "file-loader": "^0.10.0",
+    "flow-bin": "^0.38.0",
+    "flow-watch": "^1.1.0",
+    "html-loader": "^0.4.3",
+    "img-element-loader": "^1.0.0",
+    "jest": "^18.1.0",
+    "jest-cli": "^18.1.0",
+    "koa": "^2.2.0",
+    "koa-convert": "^1.2.0",
+    "koa-cors": "0.0.16",
+    "koa-json-body": "^5.3.0",
+    "koa-router": "^7.1.1",
+    "koa-static": "^3.0.0",
+    "lodash": "^3.8.0",
+    "material-ui": "^0.19.0",
+    "react": "^15.6.1",
+    "react-dom": "^15.6.1",
+    "style-loader": "^0.13.1",
+    "stylus": "^0.54.5",
+    "stylus-loader": "^2.4.0",
+    "url-loader": "^0.5.5",
+    "webpack": "^1.13.0",
+    "webpack-dev-server": "^1.14.1",
+    "webpack-stats-plugin": "^0.1.4",
+    "webpack-stream": "^3.2.0",
+    "webpack-to-memory": "^1.0.0",
+    "write-file-webpack-plugin": "^3.4.2"
+  },
+  "devDependencies": {
+    "babel-jest": "^18.0.0"
+  },
+  "jest": {
+    "moduleFileExtensions": ["js", "jsx"],
+    "moduleDirectories": ["node_modules", "src"],
+    "modulePaths": ["/src"],
+    "moduleNameMapper": {
+      "\\.(jpg|jpeg|png|gif|eot|otf|webp|svg|ttf|woff|woff2|mp4|webm|wav|mp3|m4a|aac|oga)$":
+        "<rootDir>/__mocks__/fileMock.js",
+      "\\.(css|less|styl)$": "<rootDir>/test/mock/styleMock.js"
+    },
+    "collectCoverage": false,
+    "coverageReporters": ["json", "lcov"]
   }
 }
