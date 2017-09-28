@@ -21,7 +21,7 @@ install:
 .PHONY: install
 
 clean:
-	rm -r dist
+	rm -rf dist
 .PHONY: clean
 
 build: clean

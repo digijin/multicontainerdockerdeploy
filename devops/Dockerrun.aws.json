@@ -1,51 +1,66 @@
 {
-  "AWSEBDockerrunVersion": 2,
-  "volumes": [
-    {
-      "name": "nginx-proxy-conf",
-      "host": {
-        "sourcePath": "/var/app/current/nginx"
-      }
-    }
-  ],
-  "containerDefinitions": [
-    {
-      "name": "server",
-      "image": "005361531463.dkr.ecr.ap-southeast-2.amazonaws.com/test:latest",
-      "essential": true,
-      "memory": 128,
-      "portMappings": [
-        {
-          "hostPort": 81,
-          "containerPort": 8080
-        }
-      ],
-      "links": [],
-      "mountPoints": []
-    },
-    {
-      "name": "nginx-proxy",
-      "image": "nginx",
-      "essential": true,
-      "memory": 128,
-      "portMappings": [
-        {
-          "hostPort": 80,
-          "containerPort": 80
-        }
-      ],
-      "links": ["server"],
-      "mountPoints": [
-        {
-          "sourceVolume": "awseb-logs-nginx-proxy",
-          "containerPath": "/var/log/nginx"
-        },
-        {
-          "sourceVolume": "nginx-proxy-conf",
-          "containerPath": "/etc/nginx/conf.d",
-          "readOnly": true
-        }
-      ]
-    }
-  ]
+	"AWSEBDockerrunVersion": 2,
+	"volumes": [
+		{
+			"name": "nginx-proxy-conf",
+			"host": {
+				"sourcePath": "/var/app/current/nginx"
+			}
+		}
+	],
+	"containerDefinitions": [
+		{
+			"name": "server",
+			"image":
+				"005361531463.dkr.ecr.ap-southeast-2.amazonaws.com/test:latest",
+			"essential": true,
+			"memory": 128,
+			"portMappings": [
+				{
+					"hostPort": 81,
+					"containerPort": 8080
+				}
+			],
+			"links": [],
+			"mountPoints": []
+		},
+		{
+			"name": "thumbor",
+			"image": "apsl/thumbor",
+			"essential": true,
+			"memory": 128,
+			"portMappings": [
+				{
+					"hostPort": 82,
+					"containerPort": 8000
+				}
+			],
+			"links": [],
+			"mountPoints": []
+		},
+		{
+			"name": "nginx-proxy",
+			"image": "nginx",
+			"essential": true,
+			"memory": 128,
+			"portMappings": [
+				{
+					"hostPort": 80,
+					"containerPort": 80
+				}
+			],
+			"links": ["server", "thumbor"],
+			"mountPoints": [
+				{
+					"sourceVolume": "awseb-logs-nginx-proxy",
+					"containerPath": "/var/log/nginx"
+				},
+				{
+					"sourceVolume": "nginx-proxy-conf",
+					"containerPath": "/etc/nginx/conf.d",
+					"readOnly": true
+				}
+			]
+		}
+	]
 }
