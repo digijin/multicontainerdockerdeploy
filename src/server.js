@@ -8,18 +8,18 @@ import App from "./app/App";
 app.use(serve(__dirname + "/client"));
 
 app.use(async ctx => {
-  ctx.body = ReactDOMServer.renderToStaticMarkup(
-    <html>
-      <head>
-        <title>Site</title>
-        <script src="/bundle.js" />
-        <link rel="stylesheet" href="/main.css" />
-      </head>
-      <body>
-        <App ctx={ctx} />
-      </body>
-    </html>
-  );
+	ctx.body = ReactDOMServer.renderToStaticMarkup(
+		<html>
+			<head>
+				<title>Site {process.env.APP_ENV}</title>
+				<script src="/bundle.js" />
+				<link rel="stylesheet" href="/main.css" />
+			</head>
+			<body>
+				<App ctx={ctx} />
+			</body>
+		</html>
+	);
 });
 
 app.listen(process.env.PORT || 8000);
